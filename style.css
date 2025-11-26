@@ -231,14 +231,15 @@ h3{
 @media (max-width: 768px){
 
   body{
-    /* Mobile: gradiente dedicato, molto contrastato */
-    background:
-      radial-gradient(900px 600px at 85% 0%, #38b6ff 0%, rgba(56,182,255,0) 60%),
-      radial-gradient(800px 700px at 0% 20%, #127fe3 0%, rgba(18,127,227,0) 65%),
-      radial-gradient(700px 600px at 50% 110%, #0c63b8 0%, rgba(12,99,184,0) 70%),
-      linear-gradient(180deg, #02070d 0%, #041c33 55%, #01060b 100%);
+    background-color: #041a30;   /* fallback blu */
+    background-image:
+      radial-gradient(900px 700px at 85% 0%, #1e8fe8 0%, rgba(30,143,232,0) 60%),
+      radial-gradient(900px 700px at 0% 20%, #0b5aa5 0%, rgba(11,90,165,0) 65%),
+      radial-gradient(900px 700px at 50% 110%, #083a75 0%, rgba(8,58,117,0) 70%),
+      linear-gradient(180deg, #02070d 0%, #041a30 55%, #062544 100%);
     background-repeat: no-repeat;
     background-size: cover;
+    background-attachment: scroll; /* evita bug mobile */
   }
 
   /* IMPORTANTISSIMO: niente contenitori che coprono lo sfondo */
@@ -247,7 +248,7 @@ h3{
   .row{
     background-clip: padding-box;
   }
-  
+
   .row{
     grid-template-columns: auto auto;   /* label e logo larghezza contenuto */
     grid-template-areas:
