@@ -83,11 +83,17 @@ h3{
 }
 
 @media (max-width: 768px){
+  h1{
+    font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+    font-weight: 800;
+  }
   h2{
     font-size: clamp(1.05rem, 3.2vw, 1.7rem);
+    font-weight: 600;
   }
   h3{
     font-size: clamp(1.0rem, 3vw, 1.2rem);
+    font-weight: 500;
   }
 }
 
@@ -218,22 +224,24 @@ h3{
 
 @media (max-width: 768px){
 
-  /* ogni row diventa 2 righe:
-     riga 1 = label + logo
-     riga 2 = value */
+  /* 2 righe:
+     sopra: label + logo centrati
+     sotto: value centrato */
   .row{
-    grid-template-columns: 1fr 44px;  /* label | logo */
+    grid-template-columns: 1fr 44px;   /* label | logo */
     grid-template-areas:
       "label logo"
       "value value";
     gap: 6px 10px;
     padding: 12px;
+    justify-items: center;            /* centra il contenuto nelle celle */
   }
 
   .label{
     grid-area: label;
-    text-align: left;     /* o center se le vuoi centrate anche in mobile */
+    text-align: center;              /* label centrata */
     font-size: 1rem;
+    width: 100%;
   }
 
   .logo{
@@ -247,13 +255,17 @@ h3{
     width: 28px;
     height: 28px;
     object-fit: contain;
+    display: block;
   }
 
   .value{
     grid-area: value;
+    text-align: center;              /* valore centrato sotto */
     font-size: 1rem;
+    width: 100%;
   }
 
+  /* bottone full width */
   .actions{
     justify-content: stretch;
   }
