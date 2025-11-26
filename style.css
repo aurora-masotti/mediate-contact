@@ -59,7 +59,7 @@ body{
 /* Titolo */
 h1{
   font-size: clamp(1.6rem, 3.5vw, 2.5rem);
-  font-weight: 1000;
+  font-weight: 600;
   margin: 6px 0 2px;
   letter-spacing: .3px;
   text-shadow: 0 1px 0 rgba(0,0,0,.35);
