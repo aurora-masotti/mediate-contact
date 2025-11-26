@@ -49,25 +49,43 @@ function extractContact() {
 }
 
 function buildVCard(c) {
-  // vCard 3.0 (iOS/Android)
+  // Ordine: Phone, Email, Address, Web Site, Job info, LinkedIn
   const lines = [
     "BEGIN:VCARD",
     "VERSION:3.0",
+
+    // Nome
     c.fn ? `FN:${escapeVCard(c.fn)}` : "",
-    c.org ? `ORG:${escapeVCard(c.org)}` : "",
-    c.title ? `TITLE:${escapeVCard(c.title)}` : "",
+
+    // PHONE (label custom)
     c.tel ? `TEL;TYPE=CELL:${escapeVCard(c.tel)}` : "",
-    c.email ? `EMAIL:${escapeVCard(c.email)}` : "",
-    c.url ? `URL:${escapeVCard(c.url)}` : "",
-    // Address: formato ADR;TYPE=WORK:;;street;city;region;postal;country
+    c.tel ? "X-ABLabel:Phone" : "",
+
+    // EMAIL (label custom)
+    c.email ? `EMAIL;TYPE=INTERNET;TYPE=WORK:${escapeVCard(c.email)}` : "",
+    c.email ? "X-ABLabel:Email" : "",
+
+    // ADDRESS (label custom)
     c.address ? `ADR;TYPE=WORK:;;${escapeVCard(c.address)};;;;` : "",
-    // LinkedIn come nota extra
+    c.address ? "X-ABLabel:Address" : "",
+
+    // WEBSITE (label custom)
+    c.url ? `URL;TYPE=WORK:${escapeVCard(c.url)}` : "",
+    c.url ? "X-ABLabel:Web Site" : "",
+
+    // JOB INFO (ruolo + azienda)
+    c.title ? `TITLE:${escapeVCard(c.title)}` : "",
+    c.org ? `ORG:${escapeVCard(c.org)}` : "",
+
+    // LinkedIn come nota (label custom non garantita)
     c.linkedin ? `NOTE:LinkedIn ${escapeVCard(c.linkedin)}` : "",
+
     "END:VCARD"
   ];
 
   return lines.filter(Boolean).join("\n");
 }
+
 
 function downloadVcf(text, filename) {
   const blob = new Blob([text], { type: "text/vcard;charset=utf-8" });
