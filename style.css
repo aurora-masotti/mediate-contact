@@ -234,12 +234,34 @@ h3{
 
 @media (max-width: 768px){
 
-  html{
+ html{
     background:
-      radial-gradient(900px 700px at 85% 0%, #1e8fe8 0%, rgba(30,143,232,0) 60%),
-      radial-gradient(900px 700px at 0% 20%, #0b5aa5 0%, rgba(11,90,165,0) 65%),
-      radial-gradient(900px 700px at 50% 110%, #083a75 0%, rgba(8,58,117,0) 70%),
-      linear-gradient(180deg, #041a30 0%, #062544 60%, #083a75 100%);
+      /* spot alto dx */
+      radial-gradient(420px 320px at 85% 4%,
+        #38b6ff 0%,
+        rgba(56,182,255,0.0) 68%),
+
+      /* spot alto sx */
+      radial-gradient(520px 420px at 8% 14%,
+        #0f7ad6 0%,
+        rgba(15,122,214,0.0) 70%),
+
+      /* spot basso centro */
+      radial-gradient(520px 420px at 50% 108%,
+        #0b5aa5 0%,
+        rgba(11,90,165,0.0) 72%),
+
+      /* spot medio sinistra per dare profondità */
+      radial-gradient(380px 300px at 22% 55%,
+        rgba(120,200,255,0.35) 0%,
+        rgba(120,200,255,0.0) 70%),
+
+      /* base */
+      linear-gradient(180deg,
+        #041a30 0%,
+        #062544 60%,
+        #083a75 100%);
+
     background-repeat: no-repeat;
     background-size: cover;
   }
