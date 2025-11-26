@@ -49,7 +49,7 @@ function extractContact() {
 }
 
 function buildVCard(c) {
-  // Ordine: Phone, Email, Address, Web Site, Job info, LinkedIn
+  // Ordine: Phone, Email, Address, Web Site, LinkedIn, Job info
   const lines = [
     "BEGIN:VCARD",
     "VERSION:3.0",
@@ -73,18 +73,20 @@ function buildVCard(c) {
     c.url ? `URL;TYPE=WORK:${escapeVCard(c.url)}` : "",
     c.url ? "X-ABLabel:Web Site" : "",
 
-    // JOB INFO (ruolo + azienda)
+    // LINKEDIN (secondo URL cliccabile + label custom)
+    c.linkedin ? `URL;TYPE=WORK:${escapeVCard(c.linkedin)}` : "",
+    c.linkedin ? "X-ABLabel:LinkedIn" : "",
+
+    // JOB INFO
     c.title ? `TITLE:${escapeVCard(c.title)}` : "",
     c.org ? `ORG:${escapeVCard(c.org)}` : "",
-
-    // LinkedIn come nota (label custom non garantita)
-    c.linkedin ? `NOTE:LinkedIn ${escapeVCard(c.linkedin)}` : "",
 
     "END:VCARD"
   ];
 
   return lines.filter(Boolean).join("\n");
 }
+
 
 
 function downloadVcf(text, filename) {
